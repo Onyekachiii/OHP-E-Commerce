@@ -2,8 +2,11 @@ from django.shortcuts import render
 from userauths.forms import UserRegisterForm
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.views.decorators.csrf import requires_csrf_token
+from django.urls import reverse
 
-
+@requires_csrf_token
 def register_view(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -15,10 +18,11 @@ def register_view(request):
                                     password=form.cleaned_data['password1']                        
             )
             login(request, new_user)
-            return redirect("core:index")
+            return HttpResponseRedirect(reverse("store:index"))
         
     else:
         form = UserRegisterForm()
+        
     
     
     context = {
