@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     
     #custom Apps
     'store', 
+    'userauths',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+JAZZMIN_SETTINGS = {
+    'site_header': "OHP Finishings Ltd",
+    'site_brand': "OHP Finishings Ltd",
+    'site_logo': "assets/images/menu/logo/OHPlogo.png",
+    'copyright': "OHP Finishings Ltd"
+}
+
+
+AUTH_USER_MODEL = 'userauths.User'
